@@ -1,0 +1,89 @@
+{
+  "name": "vaultsync",
+  "version": "0.0.1",
+  "description": "Framework-agnostic in-memory state management. No localStorage, no cookies. State lives in memory, syncs across tabs, and self-destructs on logout or tab close.",
+  "type": "module",
+  "main": "./index.js",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    },
+    "./react": {
+      "import": "./react.js"
+    },
+    "./vue": {
+      "import": "./vue.js"
+    },
+    "./svelte": {
+      "import": "./svelte.js"
+    },
+    "./vanilla": {
+      "import": "./vanilla.js"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "core.js",
+    "react.js",
+    "vue.js",
+    "svelte.js",
+    "vanilla.js",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node core.test.mjs",
+    "build": "echo 'Pure ESM — no build step needed'",
+    "prepublishOnly": "npm test"
+  },
+  "typesVersions": {
+    "*": {
+      "react": ["index.d.ts"],
+      "vue": ["index.d.ts"],
+      "svelte": ["index.d.ts"],
+      "vanilla": ["index.d.ts"]
+    }
+  },
+  "keywords": [
+    "state-management",
+    "store",
+    "memory",
+    "no-storage",
+    "session",
+    "react",
+    "vue",
+    "svelte",
+    "vanilla",
+    "framework-agnostic",
+    "broadcast-channel",
+    "pinia",
+    "redux"
+  ],
+  "author": "Jonas Kabalo <kabalojonas44@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonaskbalo/vaultsync"
+  },
+  "homepage": "https://github.com/jonaskbalo/vaultsync#readme",
+  "bugs": {
+    "url": "https://github.com/jonaskbalo/vaultsync/issues"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "vue": ">=3.0.0",
+    "svelte": ">=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true },
+    "vue": { "optional": true },
+    "svelte": { "optional": true }
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "sideEffects": false
+}
