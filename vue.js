@@ -7,6 +7,7 @@
  */
 
 import { reactive, onUnmounted, readonly } from 'vue';
+export { defineStore, markLoggedIn, logout, getDebugSnapshot } from './core.js';
 
 /**
  * useLumstate(storeHook)

@@ -8,6 +8,7 @@
  */
 
 import { readable } from 'svelte/store';
+export { defineStore, markLoggedIn, logout, getDebugSnapshot } from './core.js';
 
 /**
  * toSvelteStore(storeHook)

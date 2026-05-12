@@ -8,6 +8,8 @@
  *   counter.increment();
  */
 
+export { defineStore, markLoggedIn, logout, getDebugSnapshot } from './core.js';
+
 /**
  * bindStore(storeHook)
  *

@@ -1,3 +1,4 @@
+export { defineStore, markLoggedIn, logout, getDebugSnapshot } from './index.js';
 import type { UseStore, StoreInstance, Actions, Getters } from './index.js';
 import type { Readable } from 'svelte/store';
 

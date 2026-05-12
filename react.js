@@ -7,6 +7,7 @@
  */
 
 import { useEffect, useReducer, useRef } from 'react';
+export { defineStore, markLoggedIn, logout, getDebugSnapshot } from './core.js';
 
 /**
  * useLumstate(storeHook)

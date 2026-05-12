@@ -1,6 +1,6 @@
 {
   "name": "lumstate",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Framework-agnostic in-memory state management. No localStorage, no cookies. State lives in memory, syncs across tabs, and self-destructs on logout or tab close.",
   "type": "module",
   "main": "./index.js",
