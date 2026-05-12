@@ -1,5 +1,5 @@
 /**
- * Volvex — Vanilla JS Adapter
+ * Lumstate — Vanilla JS Adapter
  * Simple subscription-based watcher for non-framework usage.
  *
  * Usage:

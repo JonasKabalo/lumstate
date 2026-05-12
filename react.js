@@ -1,20 +1,20 @@
 /**
- * Volvex — React Adapter
- * Provides useVolvex() hook for React components.
+ * Lumstate — React Adapter
+ * Provides useLumstate() hook for React components.
  *
  * Usage:
- *   const { state, increment, getters } = useVolvex(useCounterStore);
+ *   const { state, increment, getters } = useLumstate(useCounterStore);
  */
 
 import { useEffect, useReducer, useRef } from 'react';
 
 /**
- * useVolvex(storeHook)
+ * useLumstate(storeHook)
  *
  * @param {function} storeHook - A store returned by defineStore(...)
  * @returns Store instance with reactive state
  */
-export function useVolvex(storeHook) {
+export function useLumstate(storeHook) {
   const storeRef = useRef(null);
   const [, forceRender] = useReducer(x => x + 1, 0);
 

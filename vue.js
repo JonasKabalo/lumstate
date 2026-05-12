@@ -1,20 +1,20 @@
 /**
- * Volvex — Vue 3 Adapter
- * Provides useVolvex() composable.
+ * Lumstate — Vue 3 Adapter
+ * Provides useLumstate() composable.
  *
  * Usage:
- *   const { state, increment, getters } = useVolvex(useCounterStore)
+ *   const { state, increment, getters } = useLumstate(useCounterStore)
  */
 
 import { reactive, onUnmounted, readonly } from 'vue';
 
 /**
- * useVolvex(storeHook)
+ * useLumstate(storeHook)
  *
  * @param {function} storeHook - A store returned by defineStore(...)
  * @returns Reactive store instance
  */
-export function useVolvex(storeHook) {
+export function useLumstate(storeHook) {
   const store = storeHook();
   const reactiveState = reactive({ ...store.state });
 

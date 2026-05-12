@@ -1,5 +1,5 @@
 /**
- * Volvex — Framework-agnostic in-memory state management
+ * Lumstate — Framework-agnostic in-memory state management
  *
  * No localStorage. No sessionStorage. No cookies.
  * State lives in memory, syncs across tabs via BroadcastChannel,

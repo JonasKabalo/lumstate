@@ -1,5 +1,5 @@
 /**
- * Volvex — Svelte Adapter
+ * Lumstate — Svelte Adapter
  * Returns a Svelte-compatible readable store.
  *
  * Usage:

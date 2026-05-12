@@ -1,4 +1,4 @@
-# 🔐 Volvex
+# 🔐 Lumstate
 
 **Framework-agnostic, in-memory state management.**  
 No `localStorage`. No `sessionStorage`. No cookies.  
@@ -6,9 +6,9 @@ State lives in memory, syncs across tabs via `BroadcastChannel`, and **self-dest
 
 ---
 
-## Why Volvex?
+## Why Lumstate?
 
-| Feature | localStorage | sessionStorage | Volvex |
+| Feature | localStorage | sessionStorage | Lumstate |
 |--------|-------------|---------------|---------|
 | Persists across tabs | ✅ | ❌ | ✅ (via BroadcastChannel) |
 | Cleared on logout | Manual | Manual | **Automatic** |
@@ -24,7 +24,7 @@ State lives in memory, syncs across tabs via `BroadcastChannel`, and **self-dest
 ## Install
 
 ```bash
-npm install volvex
+npm install lumstate
 ```
 
 ---
@@ -35,7 +35,7 @@ npm install volvex
 
 ```js
 // stores/counter.js
-import { defineStore } from 'volvex';
+import { defineStore } from 'lumstate';
 
 export const useCounterStore = defineStore('counter', {
   state: () => ({ count: 0, label: 'Counter' }),
@@ -69,11 +69,11 @@ export const useCounterStore = defineStore('counter', {
 ### ⚛️ React
 
 ```jsx
-import { useVolvex } from 'volvex/react';
+import { useLumstate } from 'lumstate/react';
 import { useCounterStore } from './stores/counter';
 
 function Counter() {
-  const store = useVolvex(useCounterStore);
+  const store = useLumstate(useCounterStore);
 
   return (
     <div>
@@ -93,10 +93,10 @@ function Counter() {
 
 ```vue
 <script setup>
-import { useVolvex } from 'volvex/vue';
+import { useLumstate } from 'lumstate/vue';
 import { useCounterStore } from './stores/counter';
 
-const store = useVolvex(useCounterStore);
+const store = useLumstate(useCounterStore);
 </script>
 
 <template>
@@ -115,7 +115,7 @@ const store = useVolvex(useCounterStore);
 
 ```svelte
 <script>
-  import { toSvelteStore } from 'volvex/svelte';
+  import { toSvelteStore } from 'lumstate/svelte';
   import { useCounterStore } from './stores/counter';
 
   const counter = toSvelteStore(useCounterStore);
@@ -130,7 +130,7 @@ const store = useVolvex(useCounterStore);
 ### 🍦 Vanilla JS
 
 ```js
-import { bindStore } from 'volvex/vanilla';
+import { bindStore } from 'lumstate/vanilla';
 import { useCounterStore } from './stores/counter';
 
 const counter = bindStore(useCounterStore);
@@ -155,7 +155,7 @@ document.getElementById('btn-dec').addEventListener('click', () => counter.decre
 ### When user logs in
 
 ```js
-import { markLoggedIn } from 'volvex';
+import { markLoggedIn } from 'lumstate';
 
 // Call this after successful login.
 // Prevents state from being wiped when navigating away.
@@ -165,7 +165,7 @@ markLoggedIn();
 ### When user logs out
 
 ```js
-import { logout } from 'volvex';
+import { logout } from 'lumstate';
 
 // Wipes ALL state across ALL tabs instantly.
 // No trace of user data remains anywhere.
@@ -204,7 +204,7 @@ unsub();
 ## Debug
 
 ```js
-import { getDebugSnapshot } from 'volvex';
+import { getDebugSnapshot } from 'lumstate';
 
 // Returns a snapshot of all active stores
 console.log(getDebugSnapshot());
@@ -215,10 +215,10 @@ console.log(getDebugSnapshot());
 
 ## TypeScript
 
-Volvex is fully typed out of the box. Types are inferred automatically from your `state`, `actions`, and `getters` definitions.
+Lumstate is fully typed out of the box. Types are inferred automatically from your `state`, `actions`, and `getters` definitions.
 
 ```ts
-import { defineStore } from 'volvex';
+import { defineStore } from 'lumstate';
 
 interface UserState {
   name: string;

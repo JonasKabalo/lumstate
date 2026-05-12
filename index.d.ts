@@ -1,4 +1,4 @@
-// Volvex TypeScript Declarations
+// Lumstate TypeScript Declarations
 
 export type StateFactory<S> = () => S;
 export type StateOrFactory<S> = S | StateFactory<S>;
@@ -34,7 +34,7 @@ export type UseStore<S, A extends Actions<S>, G extends Getters<S>> =
   () => StoreInstance<S, A, G>;
 
 /**
- * Define a new Volvex store.
+ * Define a new Lumstate store.
  *
  * @example
  * const useCounterStore = defineStore('counter', {
@@ -71,27 +71,27 @@ export function logout(): void;
 export function getDebugSnapshot(): Record<string, unknown>;
 
 // ─── React adapter ───────────────────────────────────────────────────────────
-// import { useVolvex } from 'volvex/react'
-declare module 'volvex/react' {
-  import type { UseStore, StoreInstance, Actions, Getters } from 'volvex';
-  export function useVolvex<S extends object, A extends Actions<S>, G extends Getters<S>>(
+// import { useLumstate } from 'lumstate/react'
+declare module 'lumstate/react' {
+  import type { UseStore, StoreInstance, Actions, Getters } from 'lumstate';
+  export function useLumstate<S extends object, A extends Actions<S>, G extends Getters<S>>(
     storeHook: UseStore<S, A, G>
   ): StoreInstance<S, A, G>;
 }
 
 // ─── Vue 3 adapter ───────────────────────────────────────────────────────────
-// import { useVolvex } from 'volvex/vue'
-declare module 'volvex/vue' {
-  import type { UseStore, StoreInstance, Actions, Getters } from 'volvex';
-  export function useVolvex<S extends object, A extends Actions<S>, G extends Getters<S>>(
+// import { useLumstate } from 'lumstate/vue'
+declare module 'lumstate/vue' {
+  import type { UseStore, StoreInstance, Actions, Getters } from 'lumstate';
+  export function useLumstate<S extends object, A extends Actions<S>, G extends Getters<S>>(
     storeHook: UseStore<S, A, G>
   ): StoreInstance<S, A, G>;
 }
 
 // ─── Svelte adapter ──────────────────────────────────────────────────────────
-// import { toSvelteStore } from 'volvex/svelte'
-declare module 'volvex/svelte' {
-  import type { UseStore, StoreInstance, Actions, Getters } from 'volvex';
+// import { toSvelteStore } from 'lumstate/svelte'
+declare module 'lumstate/svelte' {
+  import type { UseStore, StoreInstance, Actions, Getters } from 'lumstate';
   import type { Readable } from 'svelte/store';
   export function toSvelteStore<S extends object, A extends Actions<S>, G extends Getters<S>>(
     storeHook: UseStore<S, A, G>
@@ -99,9 +99,9 @@ declare module 'volvex/svelte' {
 }
 
 // ─── Vanilla JS adapter ──────────────────────────────────────────────────────
-// import { bindStore } from 'volvex/vanilla'
-declare module 'volvex/vanilla' {
-  import type { UseStore, StoreInstance, Actions, Getters, Subscriber, Unsubscribe } from 'volvex';
+// import { bindStore } from 'lumstate/vanilla'
+declare module 'lumstate/vanilla' {
+  import type { UseStore, StoreInstance, Actions, Getters, Subscriber, Unsubscribe } from 'lumstate';
   export interface WatchableStore<S, A extends Actions<S>, G extends Getters<S>>
     extends StoreInstance<S, A, G> {
     watch(callback: Subscriber<S>): Unsubscribe;
