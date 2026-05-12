@@ -1,5 +1,5 @@
 /**
- * Vaultsync — Svelte Adapter
+ * Volvex — Svelte Adapter
  * Returns a Svelte-compatible readable store.
  *
  * Usage:

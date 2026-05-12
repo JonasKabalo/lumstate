@@ -1,12 +1,12 @@
 /**
- * Vaultsync Core — In-memory, session-scoped state engine.
+ * Volvex Core — In-memory, session-scoped state engine.
  * No localStorage. No sessionStorage. No cookies.
  * State lives in memory, syncs across tabs via BroadcastChannel,
  * and is destroyed when the session ends.
  */
 
-const CHANNEL_NAME = '__vaultsync__';
-const SESSION_KEY = '__vaultsync_session__';
+const CHANNEL_NAME = '__volvex__';
+const SESSION_KEY = '__volvex_session__';
 
 // ─── Unique tab/session identity ────────────────────────────────────────────
 function getSessionId() {

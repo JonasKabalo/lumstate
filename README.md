@@ -1,4 +1,4 @@
-# 🔐 Vaultsync
+# 🔐 Volvex
 
 **Framework-agnostic, in-memory state management.**  
 No `localStorage`. No `sessionStorage`. No cookies.  
@@ -6,9 +6,9 @@ State lives in memory, syncs across tabs via `BroadcastChannel`, and **self-dest
 
 ---
 
-## Why Vaultsync?
+## Why Volvex?
 
-| Feature | localStorage | sessionStorage | Vaultsync |
+| Feature | localStorage | sessionStorage | Volvex |
 |--------|-------------|---------------|---------|
 | Persists across tabs | ✅ | ❌ | ✅ (via BroadcastChannel) |
 | Cleared on logout | Manual | Manual | **Automatic** |
@@ -24,7 +24,7 @@ State lives in memory, syncs across tabs via `BroadcastChannel`, and **self-dest
 ## Install
 
 ```bash
-npm install vaultsync
+npm install volvex
 ```
 
 ---
@@ -35,7 +35,7 @@ npm install vaultsync
 
 ```js
 // stores/counter.js
-import { defineStore } from 'vaultsync';
+import { defineStore } from 'volvex';
 
 export const useCounterStore = defineStore('counter', {
   state: () => ({ count: 0, label: 'Counter' }),
@@ -69,11 +69,11 @@ export const useCounterStore = defineStore('counter', {
 ### ⚛️ React
 
 ```jsx
-import { useVaultsync } from 'vaultsync/react';
+import { useVolvex } from 'volvex/react';
 import { useCounterStore } from './stores/counter';
 
 function Counter() {
-  const store = useVaultsync(useCounterStore);
+  const store = useVolvex(useCounterStore);
 
   return (
     <div>
@@ -93,10 +93,10 @@ function Counter() {
 
 ```vue
 <script setup>
-import { useVaultsync } from 'vaultsync/vue';
+import { useVolvex } from 'volvex/vue';
 import { useCounterStore } from './stores/counter';
 
-const store = useVaultsync(useCounterStore);
+const store = useVolvex(useCounterStore);
 </script>
 
 <template>
@@ -115,7 +115,7 @@ const store = useVaultsync(useCounterStore);
 
 ```svelte
 <script>
-  import { toSvelteStore } from 'vaultsync/svelte';
+  import { toSvelteStore } from 'volvex/svelte';
   import { useCounterStore } from './stores/counter';
 
   const counter = toSvelteStore(useCounterStore);
@@ -130,7 +130,7 @@ const store = useVaultsync(useCounterStore);
 ### 🍦 Vanilla JS
 
 ```js
-import { bindStore } from 'vaultsync/vanilla';
+import { bindStore } from 'volvex/vanilla';
 import { useCounterStore } from './stores/counter';
 
 const counter = bindStore(useCounterStore);
@@ -155,7 +155,7 @@ document.getElementById('btn-dec').addEventListener('click', () => counter.decre
 ### When user logs in
 
 ```js
-import { markLoggedIn } from 'vaultsync';
+import { markLoggedIn } from 'volvex';
 
 // Call this after successful login.
 // Prevents state from being wiped when navigating away.
@@ -165,7 +165,7 @@ markLoggedIn();
 ### When user logs out
 
 ```js
-import { logout } from 'vaultsync';
+import { logout } from 'volvex';
 
 // Wipes ALL state across ALL tabs instantly.
 // No trace of user data remains anywhere.
@@ -204,7 +204,7 @@ unsub();
 ## Debug
 
 ```js
-import { getDebugSnapshot } from 'vaultsync';
+import { getDebugSnapshot } from 'volvex';
 
 // Returns a snapshot of all active stores
 console.log(getDebugSnapshot());
@@ -215,10 +215,10 @@ console.log(getDebugSnapshot());
 
 ## TypeScript
 
-Vaultsync is fully typed out of the box. Types are inferred automatically from your `state`, `actions`, and `getters` definitions.
+Volvex is fully typed out of the box. Types are inferred automatically from your `state`, `actions`, and `getters` definitions.
 
 ```ts
-import { defineStore } from 'vaultsync';
+import { defineStore } from 'volvex';
 
 interface UserState {
   name: string;

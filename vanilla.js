@@ -1,5 +1,5 @@
 /**
- * Vaultsync — Vanilla JS Adapter
+ * Volvex — Vanilla JS Adapter
  * Simple subscription-based watcher for non-framework usage.
  *
  * Usage:

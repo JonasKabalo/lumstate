@@ -1,5 +1,5 @@
 /**
- * Vaultsync — Core Tests
+ * Volvex — Core Tests
  * Run with: node core.test.mjs
  */
 
@@ -41,7 +41,7 @@ function expect(actual) {
 }
 
 // ─── Tests ────────────────────────────────────────────────────────────────────
-console.log('\n🔐 Vaultsync Core Tests\n');
+console.log('\n🔐 Volvex Core Tests\n');
 
 // 1. Basic state
 test('defines a store with initial state', () => {

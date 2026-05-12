@@ -1,20 +1,20 @@
 /**
- * Vaultsync — React Adapter
- * Provides useVaultsync() hook for React components.
+ * Volvex — React Adapter
+ * Provides useVolvex() hook for React components.
  *
  * Usage:
- *   const { state, increment, getters } = useVaultsync(useCounterStore);
+ *   const { state, increment, getters } = useVolvex(useCounterStore);
  */
 
 import { useEffect, useReducer, useRef } from 'react';
 
 /**
- * useVaultsync(storeHook)
+ * useVolvex(storeHook)
  *
  * @param {function} storeHook - A store returned by defineStore(...)
  * @returns Store instance with reactive state
  */
-export function useVaultsync(storeHook) {
+export function useVolvex(storeHook) {
   const storeRef = useRef(null);
   const [, forceRender] = useReducer(x => x + 1, 0);
 

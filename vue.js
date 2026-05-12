@@ -1,20 +1,20 @@
 /**
- * Vaultsync — Vue 3 Adapter
- * Provides useVaultsync() composable.
+ * Volvex — Vue 3 Adapter
+ * Provides useVolvex() composable.
  *
  * Usage:
- *   const { state, increment, getters } = useVaultsync(useCounterStore)
+ *   const { state, increment, getters } = useVolvex(useCounterStore)
  */
 
 import { reactive, onUnmounted, readonly } from 'vue';
 
 /**
- * useVaultsync(storeHook)
+ * useVolvex(storeHook)
  *
  * @param {function} storeHook - A store returned by defineStore(...)
  * @returns Reactive store instance
  */
-export function useVaultsync(storeHook) {
+export function useVolvex(storeHook) {
   const store = storeHook();
   const reactiveState = reactive({ ...store.state });
 
