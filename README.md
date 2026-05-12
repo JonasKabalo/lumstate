@@ -29,13 +29,39 @@ npm install lumstate
 
 ---
 
+## Import Cheatsheet
+
+Each framework adapter re-exports the full core API, so you only ever need **one import** per project:
+
+```js
+// Vue
+import { defineStore, useLumstate, markLoggedIn, logout, getDebugSnapshot } from 'lumstate/vue'
+
+// React
+import { defineStore, useLumstate, markLoggedIn, logout, getDebugSnapshot } from 'lumstate/react'
+
+// Svelte
+import { defineStore, toSvelteStore, markLoggedIn, logout, getDebugSnapshot } from 'lumstate/svelte'
+
+// Vanilla JS
+import { defineStore, bindStore, markLoggedIn, logout, getDebugSnapshot } from 'lumstate/vanilla'
+
+// Framework-agnostic (core only, no adapter hook)
+import { defineStore, markLoggedIn, logout, getDebugSnapshot } from 'lumstate'
+```
+
+> `useLumstate` exists in both `lumstate/vue` and `lumstate/react` with different implementations,
+> so it cannot live in the root `lumstate` entry — use the framework subpath.
+
+---
+
 ## Core Concepts
 
 ### 1. Define a Store
 
 ```js
 // stores/counter.js
-import { defineStore } from 'lumstate';
+import { defineStore } from 'lumstate/vue'; // or /react, /svelte, /vanilla, or 'lumstate'
 
 export const useCounterStore = defineStore('counter', {
   state: () => ({ count: 0, label: 'Counter' }),
@@ -155,7 +181,7 @@ document.getElementById('btn-dec').addEventListener('click', () => counter.decre
 ### When user logs in
 
 ```js
-import { markLoggedIn } from 'lumstate';
+import { markLoggedIn } from 'lumstate/vue'; // or your framework subpath
 
 // Call this after successful login.
 // Prevents state from being wiped when navigating away.
@@ -165,7 +191,7 @@ markLoggedIn();
 ### When user logs out
 
 ```js
-import { logout } from 'lumstate';
+import { logout } from 'lumstate/vue'; // or your framework subpath
 
 // Wipes ALL state across ALL tabs instantly.
 // No trace of user data remains anywhere.
@@ -204,7 +230,7 @@ unsub();
 ## Debug
 
 ```js
-import { getDebugSnapshot } from 'lumstate';
+import { getDebugSnapshot } from 'lumstate/vue'; // or your framework subpath
 
 // Returns a snapshot of all active stores
 console.log(getDebugSnapshot());
@@ -215,10 +241,10 @@ console.log(getDebugSnapshot());
 
 ## TypeScript
 
-Lumstate is fully typed out of the box. Types are inferred automatically from your `state`, `actions`, and `getters` definitions.
+Lumstate is fully typed out of the box. In strict mode, annotate the state type on your actions and getters so TypeScript can infer the full store instance type:
 
 ```ts
-import { defineStore } from 'lumstate';
+import { defineStore } from 'lumstate/vue'; // or your framework subpath
 
 interface UserState {
   name: string;
@@ -233,20 +259,22 @@ export const useUserStore = defineStore('user', {
     role: 'user',
   }),
   actions: {
-    setUser(state, user: Pick<UserState, 'name' | 'email'>) {
+    setUser(state: UserState, user: Pick<UserState, 'name' | 'email'>) {
       state.name = user.name;
       state.email = user.email;
     },
-    promote(state) {
+    promote(state: UserState) {
       state.role = 'admin';
     },
   },
   getters: {
-    isAdmin: (state) => state.role === 'admin',
-    displayName: (state) => state.name || 'Anonymous',
+    isAdmin: (state: UserState) => state.role === 'admin',
+    displayName: (state: UserState) => state.name || 'Anonymous',
   },
 });
 ```
+
+Subpath adapters ship with their own `.d.ts` files and work with `moduleResolution: bundler`, `node16`, and `nodenext` — no `env.d.ts` shim needed.
 
 ---
 
