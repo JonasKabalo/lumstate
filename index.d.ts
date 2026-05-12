@@ -21,14 +21,14 @@ export type ComputedGetters<S, G extends Getters<S>> = {
   readonly [K in keyof G]: ReturnType<G[K]>;
 };
 
-export interface StoreInstance<S, A extends Actions<S>, G extends Getters<S>>
-  extends BoundActions<S, A> {
-  readonly state: Readonly<S>;
-  subscribe(callback: Subscriber<S>): Unsubscribe;
-  patch(partial: Partial<S>): void;
-  reset(): void;
-  getters: ComputedGetters<S, G>;
-}
+export type StoreInstance<S, A extends Actions<S>, G extends Getters<S>> =
+  BoundActions<S, A> & {
+    readonly state: Readonly<S>;
+    subscribe(callback: Subscriber<S>): Unsubscribe;
+    patch(partial: Partial<S>): void;
+    reset(): void;
+    getters: ComputedGetters<S, G>;
+  };
 
 export type UseStore<S, A extends Actions<S>, G extends Getters<S>> =
   () => StoreInstance<S, A, G>;
@@ -69,44 +69,3 @@ export function logout(): void;
  * Returns a debug snapshot of all active stores.
  */
 export function getDebugSnapshot(): Record<string, unknown>;
-
-// ─── React adapter ───────────────────────────────────────────────────────────
-// import { useLumstate } from 'lumstate/react'
-declare module 'lumstate/react' {
-  import type { UseStore, StoreInstance, Actions, Getters } from 'lumstate';
-  export function useLumstate<S extends object, A extends Actions<S>, G extends Getters<S>>(
-    storeHook: UseStore<S, A, G>
-  ): StoreInstance<S, A, G>;
-}
-
-// ─── Vue 3 adapter ───────────────────────────────────────────────────────────
-// import { useLumstate } from 'lumstate/vue'
-declare module 'lumstate/vue' {
-  import type { UseStore, StoreInstance, Actions, Getters } from 'lumstate';
-  export function useLumstate<S extends object, A extends Actions<S>, G extends Getters<S>>(
-    storeHook: UseStore<S, A, G>
-  ): StoreInstance<S, A, G>;
-}
-
-// ─── Svelte adapter ──────────────────────────────────────────────────────────
-// import { toSvelteStore } from 'lumstate/svelte'
-declare module 'lumstate/svelte' {
-  import type { UseStore, StoreInstance, Actions, Getters } from 'lumstate';
-  import type { Readable } from 'svelte/store';
-  export function toSvelteStore<S extends object, A extends Actions<S>, G extends Getters<S>>(
-    storeHook: UseStore<S, A, G>
-  ): Readable<StoreInstance<S, A, G>>;
-}
-
-// ─── Vanilla JS adapter ──────────────────────────────────────────────────────
-// import { bindStore } from 'lumstate/vanilla'
-declare module 'lumstate/vanilla' {
-  import type { UseStore, StoreInstance, Actions, Getters, Subscriber, Unsubscribe } from 'lumstate';
-  export interface WatchableStore<S, A extends Actions<S>, G extends Getters<S>>
-    extends StoreInstance<S, A, G> {
-    watch(callback: Subscriber<S>): Unsubscribe;
-  }
-  export function bindStore<S extends object, A extends Actions<S>, G extends Getters<S>>(
-    storeHook: UseStore<S, A, G>
-  ): WatchableStore<S, A, G>;
-}

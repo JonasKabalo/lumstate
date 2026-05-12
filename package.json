@@ -1,6 +1,6 @@
 {
   "name": "lumstate",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Framework-agnostic in-memory state management. No localStorage, no cookies. State lives in memory, syncs across tabs, and self-destructs on logout or tab close.",
   "type": "module",
   "main": "./index.js",
@@ -8,19 +8,23 @@
   "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "types": "./index.d.ts"
+      "types": "./index.d.ts",
+      "import": "./index.js"
     },
     "./react": {
+      "types": "./react.d.ts",
       "import": "./react.js"
     },
     "./vue": {
+      "types": "./vue.d.ts",
       "import": "./vue.js"
     },
     "./svelte": {
+      "types": "./svelte.d.ts",
       "import": "./svelte.js"
     },
     "./vanilla": {
+      "types": "./vanilla.d.ts",
       "import": "./vanilla.js"
     }
   },
@@ -29,9 +33,13 @@
     "index.d.ts",
     "core.js",
     "react.js",
+    "react.d.ts",
     "vue.js",
+    "vue.d.ts",
     "svelte.js",
+    "svelte.d.ts",
     "vanilla.js",
+    "vanilla.d.ts",
     "README.md"
   ],
   "scripts": {
@@ -41,10 +49,10 @@
   },
   "typesVersions": {
     "*": {
-      "react": ["index.d.ts"],
-      "vue": ["index.d.ts"],
-      "svelte": ["index.d.ts"],
-      "vanilla": ["index.d.ts"]
+      "react": ["react.d.ts"],
+      "vue": ["vue.d.ts"],
+      "svelte": ["svelte.d.ts"],
+      "vanilla": ["vanilla.d.ts"]
     }
   },
   "keywords": [
