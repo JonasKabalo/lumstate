@@ -66,11 +66,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jonaskbalo/vaultsync"
+    "url": "https://github.com/JonasKabalo/vaultsync"
   },
-  "homepage": "https://github.com/jonaskbalo/vaultsync#readme",
+  "homepage": "https://github.com/JonasKabalo/vaultsync#readme",
   "bugs": {
-    "url": "https://github.com/jonaskbalo/vaultsync/issues"
+    "url": "https://github.com/JonasKabalo/vaultsync/issues"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
